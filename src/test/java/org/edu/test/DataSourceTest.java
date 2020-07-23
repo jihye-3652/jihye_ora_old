@@ -15,18 +15,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-@WebAppConfiguration //JUnit과 AOP동시사용 에러 처리리를 위함
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
+@WebAppConfiguration
 public class DataSourceTest {
 
 	@Inject
 	private DataSource ds;
-
+	
 	@Inject
 	private IF_MemberService memberService;
-
-	
 	
 	@Test
 	public void testConnection() throws Exception {
@@ -44,7 +42,7 @@ public class DataSourceTest {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUser_id("user02");
 		memberVO.setUser_pw("1234");
-		memberVO.setUser_name("지혜");
+		memberVO.setUser_name("jihye");
 		memberVO.setEmail("jihye@test.com");
 		memberVO.setPoint(100);
 		memberVO.setEnabled(true);
@@ -53,18 +51,29 @@ public class DataSourceTest {
 	}
 	
 	@Test
+	public void testInsertMember() throws Exception {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUser_id("user02");
+		memberVO.setUser_pw("1234");
+		memberVO.setUser_name("jihye");
+		memberVO.setEmail("jihye@test.com");
+		memberVO.setPoint(100);
+		memberVO.setEnabled(true);
+		memberVO.setLevels("ROLE_USER");
+		memberService.insertMember(memberVO);
+	}
+	
+	@Test
 	public void testSelectMember() throws Exception {
 		System.out.println("회원리스트 입니다.");
 		PageVO pageVO = new PageVO();
 		pageVO.setPage(1);
 		pageVO.setPerPageNum(10);
-		memberService.selectMember(pageVO);
 		List<MemberVO> list = memberService.selectMember(pageVO);
 		System.out.println(list);
 		/*for(MemberVO vo:list) {
-			System.out.println("사용자아이디:" + vo.getUser_id());
-			System.out.println("사용자이메일:" + vo.getEmail());
+			System.out.println("사용자아이디 : " + vo.getUser_id());
+			System.out.println("사용자이메일 : " + vo.getEmail());
 		}*/
-		 
 	}
 }
