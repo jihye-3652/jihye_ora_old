@@ -1,5 +1,7 @@
 package kr.or.test;
+
 import java.util.function.ToIntFunction;
+
 class Student {
 	private String name;
 	private int englishScore;
@@ -23,7 +25,6 @@ class Student {
 		this.mathScore = mathScore;
 	}
 	public Student(String name, int eng, int math) {
-
 		this.name = name;
 		this.englishScore = eng;
 		this.mathScore = math;
@@ -38,8 +39,7 @@ public class LambdaAvg {
 	public static double avg(ToIntFunction<Student> function) {
 		int sum = 0;
 		for(Student student:students) {
-			//System.out.println("");
-			System.out.println("더하는 점수:" + function.applyAsInt(student));
+			//System.out.println("더하는 점수:" + function.applyAsInt(student));
 			sum = sum + function.applyAsInt(student);
 		}
 		double avg = (double) sum / students.length;
@@ -51,4 +51,5 @@ public class LambdaAvg {
 		double mathAvg = avg(s->s.getMathScore());
 		System.out.println("수학평균점수: " + mathAvg);
 	}
+
 }

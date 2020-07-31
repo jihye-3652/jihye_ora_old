@@ -27,7 +27,7 @@
 	    	login-processing-url="/login"
 	    	always-use-default-target="true"
 	    	default-target-url="/login_success"
-	    	authentication-failure-url="/login?msg=faild"
+	    	authentication-failure-url="/login?msg=fail"
 	    	username-parameter="user_id"
 	    	password-parameter="user_pw"
 	    />

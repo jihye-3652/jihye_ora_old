@@ -21,7 +21,7 @@ public class Split {
 			String token = st.nextToken();
 			System.out.println(token);
 		}
-
+		
 
 	}
 

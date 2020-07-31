@@ -34,6 +34,17 @@
 							<form role="form" action="/admin/board/delete" method="post">
 								<div class="row">
 									<div class="col-sm-12">
+										<!-- select option -->
+										<div class="form-group">
+											<label>게시판선택</label> 
+											<select name="bod_type" class="form-control" required>
+						                      <option value="">게시판선택</option>
+						                      <option value="notice" <c:out value="${(boardVO.bod_type eq 'notice')?('selected'):('')}" />>공지사항</option>
+						                      <option value="gallery" <c:out value="${(boardVO.bod_type eq 'gallery')?('selected'):('')}" />>겔러리</option>
+						                    </select>
+										</div>
+									</div>
+									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
 											<label>Title</label> <br> ${boardVO.title}
@@ -208,15 +219,15 @@
 			//alert(pageInfo);//디버그
 			printReplyList(data.replyList, $("#replyDiv"), $("#template"));
 			printPageVO(data.pageVO, $(".pagination"));
-			$("#modifyModal").modal('hide');//수정,삭제 후 모달창 없애기
 			//pageVO.totalCount 변수 출력(아래)
-			$("#countno").text(data.pageVO.totalCount);
-			$("#modifyModal").modal('hide');
+			$("#countRno").text(data.pageVO.totalCount);
+			$("#modifyModal").modal('hide');//수정,삭제 후 모달창 없애기
 		});
 	}
 	//여기까지는 변수+함수 정의하고, 실제 사용은 아래부터 실행
 	//댓글 리스트 출력실행
 	$(document).ready(function(){
+		//최초 페이지 로딩시 아래 명령 실행(아래)
 		getPage("/reply/select/" + bno + "/" + page);
 		//페이징번호 클릭시 페이지이동이 아니고, getPage함수 싷행이 되면 OK.
 		$(".pagination").on("click", "li a", function(event){
@@ -276,10 +287,10 @@ $(document).ready(function() {
 		var replyer = $("#replyerInput").val();
 		var replytext = $("#replytextInput").val();
 		//입력값 유효성 검사=validation 처리(아래)
-			if(replyer=="" || replytext==""){
-				alert("작성자와 댓글내용은 필수 입력 값 입니다.");
-				return false;
-			}
+		if(replyer=="" || replytext==""){
+			alert("작성자와 댓글내용은 필수 입력 값 입니다.");
+			return false;
+		}
 		$.ajax({
 			type:'post',
 			url:'/reply/insert',

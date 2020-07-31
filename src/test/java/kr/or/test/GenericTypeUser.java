@@ -16,7 +16,7 @@ class Container<T> {
 class ContainerKV<K,V> {
 	private K key;
 	private V value;
-
+	
 	public void set(K key, V value) {
 		this.key = key;
 		this.value = value;
@@ -38,7 +38,7 @@ public class GenericTypeUser {
 		String nameV = containerKV1.getValue();
 		System.out.println("입력된 ContainerKV변수의 키 : " + nameK);
 		System.out.println("입력된 ContainerKV변수의 값 : " + nameV);
-
+		
 		Map<String,String> tableKV = new HashMap<String,String>();  
 		tableKV.put("userid", "user02");
 		tableKV.put("userpw", "1234");
@@ -46,12 +46,12 @@ public class GenericTypeUser {
 		System.out.println("아이디:" + tableKV.get("userid"));
 		System.out.println("암호:" + tableKV.get("userpw"));
 		System.out.println("이름:" + tableKV.get("username"));
-
+		
 		Container<String> container1 = 
 				new Container<String>();
 		//컨테이너1 t변수: 스트링 홍길동
 		container1.set("홍길동");
-
+		
 		Container<Integer> container2 =
 				new Container<Integer>();
 		//컨테이너2 t변수: 정수형 6

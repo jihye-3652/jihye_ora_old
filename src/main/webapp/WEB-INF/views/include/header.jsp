@@ -65,10 +65,11 @@ if('${msg}' != ""){
                         </div>
 					</li>
 					
-	        		<li><a href="/board/list" class="openAll2"><b>NEWS</b></a>
+	        		<li><a href="/board/list?searchBoard=" class="openAll2"><b>NEWS</b></a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                            <li><a href="/board/list">JICA NEWS</a></li>
+                            <li><a href="/board/list?searchBoard=notice">NOTICE</a></li>
+                            <li><a href="/board/list?searchBoard=gallery">GALLERY</a></li>
                             <li><a href="#">NEWSLETTERS</a></li>
                             <li><a href="#">COVID-19 UPDATES</a></li>
                             </ul>

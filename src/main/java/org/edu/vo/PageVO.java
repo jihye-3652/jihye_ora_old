@@ -1,7 +1,7 @@
 package org.edu.vo;
 
 public class PageVO {
-	private int startNo;//게시판테이블, 회원테이블의 필드와는 직접관계없음.
+	private int startNo;//게시판테이블,회원테이블의 필드와는 직접관계없음.
 	private int perPageNum;
 	private Integer page;//jsp단에서 null로 값이 올때 에러가 발생하지 않도록 Integer사용
 	private int totalCount;
@@ -9,10 +9,11 @@ public class PageVO {
 	private int startPage;
 	private boolean prev;
 	private boolean next;
-	//검색용 변수 2개 추가
+	//검색용 변수 2+1개 추가
 	private String searchType;
 	private String searchKeyword;
-		
+	private String searchBoard;
+	
 	public String getSearchType() {
 		return searchType;
 	}
@@ -35,7 +36,7 @@ public class PageVO {
 		//ceil함수는 천장 함수로 1.1 = 2, 2.1 = 3 으로 출력된다.
 		//반대되는 바닥함수로 floor(), 반올림 함수로 round()가 있다.
 		//jsp에서 클릭한 페이지번호를 기준으로 끝 페이지를 계산한다.
-		this.startPage = (tempEnd - this.perPageNum) +1;
+		this.startPage = (tempEnd - this.perPageNum)+1;
 		//시작 페이지 계산 클릭한page번호 10일때 까지 시작페이지는 1
 		if(tempEnd * this.perPageNum > this.totalCount) {
 			//클릭한 page번호로 계산된 게시물수가 실제게시물개수 totalCount 클때
@@ -99,5 +100,13 @@ public class PageVO {
 	}
 	public void setPerPageNum(int perPageNum) {
 		this.perPageNum = perPageNum;
+	}
+
+	public String getSearchBoard() {
+		return searchBoard;
+	}
+
+	public void setSearchBoard(String searchBoard) {
+		this.searchBoard = searchBoard;
 	}
 }

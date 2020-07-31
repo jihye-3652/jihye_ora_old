@@ -10,7 +10,7 @@ public class StringBuilderUser {
 			//문자열하고 숫자 더하면 문자열
 		}
 		System.out.println(str);
-
+		
 		StringBuilder sb = new StringBuilder();
 		for(int cnt=1;cnt<=100;cnt++) {
 			sb.append(cnt);

@@ -41,7 +41,7 @@ public class ThreadUser {
 		}catch(InterruptedException e) {
 		}
 		threadMovie.interrupt();//무비스레드를 중지하겠다는 메서드실행.
-
+		
 		Thread threadMusic = new Thread(new MusicRunnable());
 		threadMusic.start();
 	}
